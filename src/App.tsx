@@ -1,6 +1,7 @@
 
 import { ThemeProvider } from "@mui/material";
 import Card from './Components/Card'
+import Homepage from "./Pages/Homepage";
 import { theme } from './theme'
 
 function App() {
@@ -13,7 +14,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div>
-        <Card /> 
+        <Homepage />
+        {/* <Card />  */}
       </div>
     </ThemeProvider>
   );

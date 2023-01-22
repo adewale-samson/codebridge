@@ -14,7 +14,7 @@ const DateBox = styled(Box)(({ theme }) => ({
 const Card = () => {
   return (
     <>
-      <CardComponent sx={{ maxWidth: "400px", boxShadow: 'rgba(0, 0, 0, 0.05)', borderRadius: '5px' }}>
+      <CardComponent sx={{ maxWidth: "400px", borderRadius: '5px', marginBottom: '45px', boxShadow: '0px 8px 24px rgba(0, 0, 0, 0.05)' }}>
         <CardActionArea>
           <CardMedia
             component="img"
