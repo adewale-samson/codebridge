@@ -1,11 +1,11 @@
-import { styled, InputBase, InputAdornment, Stack, Box } from "@mui/material";
-import Typography from "@mui/material/Typography";
+import { styled, InputBase, InputAdornment, Stack, Box, Typography, TextField } from "@mui/material";
+// import Typography from "@mui/material/Typography";
 import SearchIcon from "@mui/icons-material/Search";
-import TextField from '@mui/material/TextField';
+// import TextField from '@mui/material/TextField';
 import Card from "../Components/Card";
 
 const Search = styled(TextField)(({ theme }) => ({
-  borderRadius: theme.shape.borderRadius,
+  borderRadius: '5px',
   border: "1px solid #EAEAEA", marginBottom: '40px',
   width: "52.632%", boxSizing: 'border-box',
   boxShadow: '0px 8px 24px rgba(0, 0, 0, 0.05)',

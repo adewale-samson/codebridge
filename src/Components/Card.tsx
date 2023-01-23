@@ -20,7 +20,8 @@ const Card = () => {
             component="img"
             height="217px"
             width="100%"
-            image="https://source.unsplash.com/random/1920x1080/?wallpaper"
+            image=""
+            // image="https://source.unsplash.com/random/1920x1080/?wallpaper"
             alt="green iguana"
           />
           <CardContent>
