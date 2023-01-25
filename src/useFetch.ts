@@ -18,7 +18,6 @@ export interface InfoProps {
 }
 export interface ReadContextType {
     click: NewsData | null;
- 
 }
 
 
@@ -26,7 +25,6 @@ const useFetch = (url: string) => {
     const navigate = useNavigate()
     const [news, setNews] = useState<NewsData[]>([]);
     const [click, setClick] = useState<NewsData | null>(null);
-    const [error, setError] = useState(null)
     useEffect(() => {
         const getData = async () => {
             try {
@@ -52,7 +50,7 @@ const useFetch = (url: string) => {
     }
 
 
-    return { news, click, error, handleClick, backHandler }
+    return { news, click, handleClick, backHandler }
 }
 
 export default useFetch

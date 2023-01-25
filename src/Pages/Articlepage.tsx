@@ -31,7 +31,7 @@ const navigate = useNavigate();
             position: 'relative',
             top: "-90px",
             
-            padding: "35px 75px",
+            padding: {xs:'35px 40px', md:"35px 75px", lg:'35px 75px'} ,
             background: "#ffffff",
             width: "89.583%",
             margin: '0 auto',
@@ -57,7 +57,6 @@ const navigate = useNavigate();
             {content}
             {content}
             {content}
-            {content}
             
           </Typography>
         </Box>
@@ -71,7 +70,7 @@ const navigate = useNavigate();
             color: "#363636",
             fontSize: "16px",
             fontWeight: 700,
-            position: 'relative', top: '-50px', left: '151.97px'
+            position: 'relative', top: '-50px', left: {xs: '70px', md:'151px', lg:'151px'}
             
           }}
           onClick={backHandler}

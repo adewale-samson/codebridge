@@ -2,12 +2,9 @@ import { styled, InputAdornment, Stack, Box, Typography, TextField } from "@mui/
 import SearchIcon from "@mui/icons-material/Search";
 import Card from "../Components/Card";
 import useFetch from '../useFetch'
-import { ReadContextType } from "../useFetch";
-import { createContext } from 'react'
 
 
 
-export const ReadContext = createContext<ReadContextType>({click: null});
 const Search = styled(TextField)(({ theme }) => ({
   borderRadius: '5px',
   border: "1px solid #EAEAEA", marginBottom: '40px',
@@ -31,10 +28,10 @@ let url= 'https://newsapi.org/v2/top-headlines?country=us&apiKey=6c4f02d3895b463
 
 const Homepage = () => {
  
-  const {news, click, error, handleClick} = useFetch(url);
+  const {news, handleClick} = useFetch(url);
  
   return (
-    <ReadContext.Provider value={{click}}>
+    
     <Box sx={{padding:{lg:'30px 50px', md:'30px 50px', sm:'30px 50px', xs:'30px 25px'}}}>
       <Typography
         variant="h6"
@@ -44,21 +41,7 @@ const Homepage = () => {
       >
         Filter by keywords
       </Typography>
-      {/* <Search>
-       
-        <InputBase
-          placeholder="The most successful IT companies in 2020"
-          type="search"
-          inputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon />
-              </InputAdornment>
-            ),
-          }}
-          sx={{ width: "52.632%", border: "1px solid #EAEAEA" }}
-        />
-      </Search> */}
+      
   
       <Search
       type='search'
@@ -84,7 +67,7 @@ const Homepage = () => {
       </Stack>
       
     </Box>
-    </ReadContext.Provider>
+    
   );
 };
 
