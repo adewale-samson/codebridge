@@ -18,8 +18,6 @@ const DateBox = styled(Box)(({ theme }) => ({
 
 const Card: React.FC<{info: NewsData, moreClick: ()=>void}> = ({info, moreClick}) => {
 
-  
-  console.log(info, moreClick)
   return (
     <>
      

@@ -2,9 +2,8 @@ import { styled, InputAdornment, Stack, Box, Typography, TextField } from "@mui/
 import SearchIcon from "@mui/icons-material/Search";
 import Card from "../Components/Card";
 import useFetch from '../useFetch'
-import { NewsData, ReadContextType } from "../useFetch";
-import { useNavigate } from 'react-router-dom'
-import { useState, createContext } from 'react'
+import { ReadContextType } from "../useFetch";
+import { createContext } from 'react'
 
 
 
