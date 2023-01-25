@@ -1,23 +1,19 @@
 
 import { ThemeProvider } from "@mui/material";
-import Card from './Components/Card'
 import Homepage from "./Pages/Homepage";
 import Articlepage from './Pages/Articlepage'
 import { theme } from './theme'
+import { Routes, Route } from 'react-router-dom'
 
 function App() {
-  // const theme = createTheme({
-  //   typography: {
-  //     fontFamily: ["Montserrat", "sans-serif"].join(","),
-  //   },
-  // });
+  
 
   return (
     <ThemeProvider theme={theme}>
-      <div>
-        <Homepage />
-        <Articlepage />
-      </div>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path='articlepage' element={<Articlepage />} />
+      </Routes>
     </ThemeProvider>
   );
 }
