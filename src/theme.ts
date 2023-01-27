@@ -15,10 +15,5 @@ export const theme = createTheme({
       }
 })
 
-// theme = createTheme(theme, {
-//     palette: {
-//       otherColor: {
-//         main: '#575757',
-//       },
-//     },
-//   });
+
+

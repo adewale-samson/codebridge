@@ -8,10 +8,10 @@ export interface PropsContextType {
 export interface NewsData {
     id: string;
     title: string;
-    urlToImage: string;
-    content: string;
-    author: string;
-    description: string;
+    imageUrl: string;
+    summary: string;
+    publishedAt: string;
+    newsSite: string;
 }
 export interface InfoProps {
     info: NewsData;  
@@ -29,9 +29,9 @@ const useFetch = (url: string) => {
         const getData = async () => {
             try {
                 const response = await axios.get(url);
-                const articles = response.data.articles;
-                const articleSnippet = articles.slice(12,18);
-                setNews(articleSnippet);
+                console.log(response)
+                const slicedResponse = response.data.slice(4, 10)
+                setNews(slicedResponse);
             } catch (err) {
                 console.log(err)
             }

@@ -14,9 +14,9 @@ const navigate = useNavigate();
 }
 
   const location = useLocation();
-  const image = location.state.click.urlToImage;
+  const image = location.state.click.imageUrl;
   const title = location.state.click.title;
-  const content = location.state.click.content;
+  const content = location.state.click.summary;
   
   return (
     <Box>

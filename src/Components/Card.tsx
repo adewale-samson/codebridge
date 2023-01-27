@@ -16,7 +16,7 @@ const DateBox = styled(Box)(({ theme }) => ({
   alignItems: "center",
 }));
 
-const Card: React.FC<{info: NewsData, moreClick: ()=>void}> = ({info, moreClick}) => {
+const Card: React.FC<{info: NewsData,  moreClick: ()=>void}> = ({info, moreClick}) => {
 
   return (
     <>
@@ -27,8 +27,8 @@ const Card: React.FC<{info: NewsData, moreClick: ()=>void}> = ({info, moreClick}
             component="img"
             height="217px"
             width="100%"
-            image={info.urlToImage}
-            alt={info.title}
+            image={info.imageUrl}
+            alt={info.newsSite}
           />
           <CardContent>
             <DateBox>
@@ -48,10 +48,12 @@ const Card: React.FC<{info: NewsData, moreClick: ()=>void}> = ({info, moreClick}
               </Typography>
             </DateBox>
             <Typography variant="h5" component="div" sx={{fontSize: '24px', width: '350px', height: '58px',marginBottom: '20px'}}>
-              {info.title.slice(0, 41)}
+              {info.title.slice(0, 43)}
+              {/* {titleChange.slice(0,43)} */}
             </Typography>
             <Typography variant="body2" color="text.primary" sx={{height: '96px', width: '350px'}}>
-              {info.content}
+              {info.summary.slice(0, 100)}
+              {/* {description.slice(0, 100)} */}
             </Typography>
           </CardContent>
         </CardActionArea>

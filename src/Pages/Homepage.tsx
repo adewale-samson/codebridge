@@ -1,7 +1,8 @@
 import { styled, InputAdornment, Stack, Box, Typography, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import Card from "../Components/Card";
-import useFetch from '../useFetch'
+import { useState, useEffect } from 'react'
+import useFetch, {NewsData} from '../useFetch'
 
 
 
@@ -24,11 +25,47 @@ const Search = styled(TextField)(({ theme }) => ({
   }
 }));
 
-let url= 'https://newsapi.org/v2/top-headlines?country=us&apiKey=6c4f02d3895b4639b40c9ccd895bc885'
+
+const url = 'https://api.spaceflightnewsapi.net/v3/articles'  
 
 const Homepage = () => {
- 
   const {news, handleClick} = useFetch(url);
+
+  const [searchText, setSearchText] = useState('')
+  const [filteredNews, setFilteredNews] = useState<NewsData[]>([])
+
+
+
+   useEffect(() => {
+    const filterData = () => {
+      const keywords = searchText.split(' ')
+      let filteredData = news.filter((item) => {
+        let matchName = false
+        let matchDescription = false
+        keywords.forEach((keyword) => {
+          if(item.title.toLowerCase().includes(keyword.toLowerCase())) matchName = true
+          if(item.summary.toLowerCase().includes(keyword.toLowerCase())) matchDescription = true
+        })
+        return matchName || matchDescription
+      })
+      filteredData.sort((a, b) => {
+        let aNameMatch = 0
+        let bNameMatch = 0
+        let aDescriptionMatch = 0
+        let bDescriptionMatch = 0
+        keywords.forEach((keyword) => {
+          if(a.title.toLowerCase().includes(keyword.toLowerCase())) aNameMatch++
+          if(b.title.toLowerCase().includes(keyword.toLowerCase())) bNameMatch++
+          if(a.summary.toLowerCase().includes(keyword.toLowerCase())) aDescriptionMatch++
+          if(b.summary.toLowerCase().includes(keyword.toLowerCase())) bDescriptionMatch++
+        })
+        if(aNameMatch !== bNameMatch) return bNameMatch - aNameMatch
+        else return bDescriptionMatch - aDescriptionMatch
+      })
+      setFilteredNews(filteredData)
+    }
+    filterData()
+  }, [searchText, news])
  
   return (
     
@@ -46,6 +83,8 @@ const Homepage = () => {
       <Search
       type='search'
         placeholder="The most successful IT companies in 2020"
+          value={searchText}
+          onChange={(event) => setSearchText(event.target.value)}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start" >
@@ -54,17 +93,22 @@ const Homepage = () => {
           ),
         }}  
       />
-      <Typography variant='h6' color="primary" sx={{fontWeight: '600', fontSize: '16px', borderBottom: '1px solid #EAEAEA'}}>
-        Results: 6
-      </Typography>
+        <Typography variant='h6' color="primary" sx={{fontWeight: '600', fontSize: '16px', borderBottom: '1px solid #EAEAEA'}}>
+          Results: {filteredNews ? filteredNews.length: news.length} 
+        </Typography>
       <Stack direction='row' justifyContent='space-between' alignItems='center' flexWrap='wrap' sx={{paddingTop: '45px', justifyContent: {xs: 'space-around', md: 'space-around'}}}>
         {
-          news.map((info, index) => {
-             return <Card key={index}  info={info} moreClick={() =>handleClick(info)}/>
+          filteredNews.map((info, index) => {
+             return <Card key={info.id}  info={info} moreClick={() =>handleClick(info)}/>
 
           })
         }
       </Stack>
+        {filteredNews.length === 0 && (
+          <Typography variant="body1" align={filteredNews.length === 0 ? "center" : 'left'} >
+          No results found
+          </Typography>
+          )}
       
     </Box>
     
@@ -72,3 +116,6 @@ const Homepage = () => {
 };
 
 export default Homepage;
+
+
+
